@@ -35,7 +35,7 @@ public class Gun_Man : MonoBehaviour
         nowHp = 50;
         atkDmg = 10;
 
-        transform.position = new Vector3(0,0,0);
+        gun_man.transform.position = new Vector3(0,0,0);
         animator = GetComponent<Animator>();
         SetAttackSpeed(1.5f);
     }
@@ -46,7 +46,7 @@ public class Gun_Man : MonoBehaviour
         
         float h = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-
+        Debug.Log(h + "    " +  y);
         
         if(h > 0)
         {
