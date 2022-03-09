@@ -46,7 +46,7 @@ public class Gun_Man : MonoBehaviour
         
         float h = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        Debug.Log(h + "    " +  y);
+        
         
         if(h > 0)
         {
@@ -95,7 +95,8 @@ public class Gun_Man : MonoBehaviour
         // !animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_gun"))
         if(Input.GetKeyDown(KeyCode.K))
         {
-            animator.SetTrigger("attack");
+            if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack_gun"))
+                animator.SetTrigger("attack");
             if(transform.localScale.x == -1)
                 Instantiate(basicbullet, 
                             new Vector3 (transform.position.x + 1.6f,transform.position.y + 0.4f, 0.0f),

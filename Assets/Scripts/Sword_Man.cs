@@ -44,7 +44,6 @@ public class Sword_Man : MonoBehaviour
         nowHpbar.fillAmount = (float)nowHp / (float)maxHp;
         float h = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
-        Debug.Log(h + "    " +  y);
         
         if(h > 0)
         {

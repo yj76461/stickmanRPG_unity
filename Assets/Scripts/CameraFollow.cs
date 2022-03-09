@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
 
-    public Transform playerTransform;
+    private Transform playerTransform;
 
     public float speed;
 
@@ -16,13 +16,15 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         transform.position = playerTransform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerTransform != null)
+       
+        if(true)
         {
             float clampedX = Mathf.Clamp(playerTransform.position.x, minX, maxX);
             float clampedY = Mathf.Clamp(playerTransform.position.y, minY, maxY);

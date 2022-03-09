@@ -14,12 +14,12 @@ TagManager:
   - 
   - Water
   - UI
+  - moneytext
   - 
   - 
   - 
   - 
-  - 
-  - 
+  - lobby
   - 
   - 
   - 
@@ -43,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: lobby
+    uniqueID: 250104801
+    locked: 0
+  - name: store
+    uniqueID: 1689492577
+    locked: 0
+  - name: settings
+    uniqueID: 3635093677
     locked: 0
