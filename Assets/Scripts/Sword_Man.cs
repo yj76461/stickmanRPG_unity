@@ -12,15 +12,15 @@ public class Sword_Man : MonoBehaviour
     public int atkDmg;
     public float atkSpeed = 1.0f;
     public bool attacked = false;
-    public Image nowHpbar;
-
     void AttackTrue()
     {
         attacked = true;
+        Debug.Log("attack!! "+ attacked);
     }
     void AttackFalse()
     {
         attacked = false;
+        Debug.Log("attack!! "+ attacked);
     }
     void SetAttackSpeed(float speed)
     {
@@ -41,7 +41,7 @@ public class Sword_Man : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        nowHpbar.fillAmount = (float)nowHp / (float)maxHp;
+        
         float h = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         

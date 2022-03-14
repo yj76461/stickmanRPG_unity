@@ -6,8 +6,6 @@ public class Manager_EnemySpawn : MonoBehaviour
 {
     public bool enableSpawn = true;
  
-    //Prefab을 받을 public 변수
-    public GameObject Enemy2;
  
     // 카메라 크기
     float camera_minx;
@@ -16,9 +14,9 @@ public class Manager_EnemySpawn : MonoBehaviour
     float camera_maxy;
  
     // 동시 적 스폰 갯수
-    int enemyVisibleLimit = 1;
+    int enemyCount = 0;
     // 최대 적 스폰 갯수
-    int enemySpawnLimit = 5;
+    int enemySpawnLimit = 10;
  
  
     // 생성된 객체를 받아올 배열
@@ -32,14 +30,17 @@ public class Manager_EnemySpawn : MonoBehaviour
         if (enableSpawn)
         {
             // Prefub의 태그를 이용해서 적 갯수 찾아오기
-            enemies = GameObject.FindGameObjectsWithTag("enemy_wizard");
+            //enemies = GameObject.FindGameObjectsWithTag("enemy_wizard");
             if(enemies.Length < 5)
             {
                 //랜덤한 위치와, 화면 제일 위에서 Enemy를 하나 생성해줍니다.
-                GameObject enemy = (GameObject)Instantiate(Enemy2, new Vector3(randomX, randomY, 0f), Quaternion.identity);               
+                GameObject enemy = (GameObject)Instantiate(enemies[0], new Vector3(randomX, randomY, 0f), Quaternion.identity);               
+                enemyCount++;
             }
  
         }
+        if(enemyCount == enemySpawnLimit)
+            enableSpawn = false;
     }
     void Start()
     {
@@ -53,13 +54,13 @@ public class Manager_EnemySpawn : MonoBehaviour
 
         Debug.Log("카메라 위치 y value: " + camera_maxy+ " %" + camera_miny);
         // 적 스폰 관련 값 초기화
-        enemyVisibleLimit = 1;
-        enemySpawnLimit = 5;
+        
  
  
         //3초후 부터, SpawnEnemy함수를 1초마다 반복해서 실행 시킵니다.
-        if(enemyVisibleLimit < 5)
-        InvokeRepeating("SpawnEnemy", 3, 1); 
+        
+        InvokeRepeating("SpawnEnemy", 3, 1);
+            
     }
     void Update()
     {

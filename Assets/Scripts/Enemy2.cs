@@ -34,6 +34,17 @@ public class Enemy2 : MonoBehaviour
     public Sword_Man sword_man;
     Image nowHpbar;
 
+    
+
+
+    void Start()
+    {
+        
+        SetEnemyStatus("Enemy2", 100, 10, 1);
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        //enemyAnimator = enemy.enemyAnimator;
+    }
+
     private void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("bullet"))
         {
@@ -49,7 +60,7 @@ public class Enemy2 : MonoBehaviour
         }
         if (col.CompareTag("sword"))
         {
-            if(sword_man.attacked)
+            if(GameObject.Find("sword_man").GetComponent<Sword_Man>().attacked) //타 오브젝트의 변수를 불러올때.. 값이 변하는 변수는 이렇게 불러오자.
             {
                 nowHp -= sword_man.atkDmg;
                 Debug.Log(nowHp);
@@ -64,15 +75,6 @@ public class Enemy2 : MonoBehaviour
         }
     }
 
-
-
-    void Start()
-    {
-        
-        SetEnemyStatus("Enemy2", 100, 10, 1);
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        //enemyAnimator = enemy.enemyAnimator;
-    }
 
     // Update is called once per frame
     void Update()

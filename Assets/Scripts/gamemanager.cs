@@ -24,7 +24,9 @@ public class gamemanager : MonoBehaviour
     public void OnClickPlayButton()
     {
         lobby.SetActive(false);
+        store.SetActive(false);
         stages[stageIdx].SetActive(true);
+        FindObjectOfType<CameraFollow>().search_Player();
     }
     public void OnClickStoreButton()
     {

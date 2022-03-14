@@ -19,6 +19,7 @@ public class Gun_Man : MonoBehaviour
     void AttackTrue()
     {
         attacked = true;
+        Debug.Log("attacked "+attacked);
     }
     void AttackFalse()
     {
@@ -33,7 +34,7 @@ public class Gun_Man : MonoBehaviour
     {
         maxHp = 50;
         nowHp = 50;
-        atkDmg = 10;
+        atkDmg = 44;
 
         gun_man.transform.position = new Vector3(0,0,0);
         animator = GetComponent<Animator>();

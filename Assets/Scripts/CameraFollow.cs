@@ -6,6 +6,10 @@ public class CameraFollow : MonoBehaviour
 {
 
     private Transform playerTransform;
+    public GameObject[] characters;
+
+    private bool searched = false;
+    private int characterIdx = 0;
 
     public float speed;
 
@@ -16,7 +20,17 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        
+        //Invoke("search_Player", 1.0f);
+    }
+
+    public void search_Player()
+    {
+        while(characters[characterIdx].activeSelf != true )
+            characterIdx++;
+        searched = true;
+        playerTransform = characters[characterIdx].transform;
         transform.position = playerTransform.position;
     }
 
@@ -24,7 +38,7 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
        
-        if(true)
+        if(searched == true)
         {
             float clampedX = Mathf.Clamp(playerTransform.position.x, minX, maxX);
             float clampedY = Mathf.Clamp(playerTransform.position.y, minY, maxY);
